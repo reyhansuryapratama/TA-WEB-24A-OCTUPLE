@@ -223,9 +223,6 @@ Area ini juga dikenal sebagai salah satu spot diving terbaik di Pahawang dengan 
   },
 ];
 
-/* ============================================================
-   GET DESTINASI BY SLUG
-============================================================ */
 
 export function getDestinasiBySlug(
   slug: string
