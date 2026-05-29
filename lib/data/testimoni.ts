@@ -4,7 +4,7 @@
 
 import { Testimoni } from "@/types";
 
-export const testimoniList: Testimoni[] = [
+export const testimoniData: Testimoni[] = [
   {
     id: "1",
     nama: "Rizky Pratama",
@@ -17,6 +17,7 @@ export const testimoniList: Testimoni[] = [
     paket: "Open Trip Premium",
     foto: "/images/review-1.jpg",
   },
+
   {
     id: "2",
     nama: "Sari Dewi Rahayu",
@@ -24,11 +25,12 @@ export const testimoniList: Testimoni[] = [
     avatar: "/images/avatar-2.jpg",
     rating: 5,
     komentar:
-      "Paket 2D1N-nya luar biasa! BBQ seafood di tepi pantai dengan bintang di atas kepala — pengalaman yang tidak akan terlupakan seumur hidup. Terumbu karangnya juga masih sangat terjaga. Tim fotografernya keren, foto-fotonya instagramable semua!",
+      "Paket 2D1N-nya luar biasa! BBQ seafood di tepi pantai dengan bintang di atas kepala — pengalaman yang tidak akan terlupakan seumur hidup.",
     tanggal: "2025-11-02",
     paket: "Paket Menginap 2D1N",
     foto: "/images/review-2.jpg",
   },
+
   {
     id: "3",
     nama: "Ahmad Fauzi",
@@ -36,10 +38,11 @@ export const testimoniList: Testimoni[] = [
     avatar: "/images/avatar-3.jpg",
     rating: 5,
     komentar:
-      "Gosong Sekopong benar-benar epic! Foto di tengah laut dengan pasir putih — kelihatan seperti di Maladewa. Pemandunya tahu persis kapan waktu terbaik untuk ke sana. Worth every rupiah!",
+      "Gosong Sekopong benar-benar epic! Foto di tengah laut dengan pasir putih kelihatan seperti di Maladewa.",
     tanggal: "2025-11-18",
     paket: "Open Trip Basic",
   },
+
   {
     id: "4",
     nama: "Maya Putri Anggraini",
@@ -47,11 +50,12 @@ export const testimoniList: Testimoni[] = [
     avatar: "/images/avatar-4.jpg",
     rating: 5,
     komentar:
-      "Private trip buat anniversary kami jadi momen terbaik dalam hidup! Drone footage-nya keren banget, udah kayak film dokumenter. Pelayanannya beneran VIP, semua kebutuhan dipenuhi. Makasih banyak tim Pahawang Wisata!",
+      "Private trip buat anniversary kami jadi momen terbaik dalam hidup! Drone footage-nya keren banget.",
     tanggal: "2025-12-01",
     paket: "Private Trip Exclusive",
     foto: "/images/review-4.jpg",
   },
+
   {
     id: "5",
     nama: "Budi Santoso",
@@ -59,10 +63,11 @@ export const testimoniList: Testimoni[] = [
     avatar: "/images/avatar-5.jpg",
     rating: 4,
     komentar:
-      "Snorkeling di Pahawang adalah pengalaman pertama saya dan langsung jatuh cinta! Ikannya banyak banget dan berani dideketin. Guide-nya sabar dan membantu banget untuk yang belum bisa berenang. Pasti balik lagi!",
+      "Snorkeling di Pahawang adalah pengalaman pertama saya dan langsung jatuh cinta!",
     tanggal: "2025-12-10",
     paket: "Open Trip Basic",
   },
+
   {
     id: "6",
     nama: "Dina Amalia",
@@ -70,15 +75,27 @@ export const testimoniList: Testimoni[] = [
     avatar: "/images/avatar-6.jpg",
     rating: 5,
     komentar:
-      "Sunset di Pahawang tidak ada duanya! Warna langitnya dramatis banget. Trip premiumnya sangat worth it — 5 spot snorkeling, foto underwater yang bagus-bagus, dan makan siang yang enak. Recommended banget buat honeymooners!",
+      "Sunset di Pahawang tidak ada duanya! Trip premiumnya sangat worth it.",
     tanggal: "2025-12-22",
     paket: "Open Trip Premium",
     foto: "/images/review-6.jpg",
   },
 ];
 
-export function getFeaturedTestimoni(limit = 4): Testimoni[] {
-  return testimoniList
-    .filter((t) => t.rating >= 4.5 || t.rating === 5)
+// ============================================================
+// Helper Functions
+// ============================================================
+
+export function getFeaturedTestimoni(
+  limit: number = 4
+): Testimoni[] {
+  return testimoniData
+    .filter((t) => t.rating >= 4)
     .slice(0, limit);
+}
+
+export function getTestimoniById(
+  id: string
+): Testimoni | undefined {
+  return testimoniData.find((t) => t.id === id);
 }

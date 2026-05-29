@@ -10,19 +10,23 @@ export const paketList: PaketWisata[] = [
     nama: "Open Trip Basic",
     deskripsi:
       "Paket terjangkau untuk menjelajahi keindahan Pahawang bersama traveler lainnya.",
+
     harga: 175000,
     hargaCoret: 225000,
+
     durasi: "1 Hari (07:00 - 17:00)",
     peserta: "Min. 10 orang",
+
     include: [
       "Transportasi kapal PP dari Dermaga Ketapang",
       "Snorkeling di 3 spot terbaik",
       "Peralatan snorkeling (masker, fin, life jacket)",
-      "Makan siang 1x (nasi + lauk + air mineral)",
+      "Makan siang 1x",
       "Dokumentasi foto",
-      "Guide lokal berpengalaman",
+      "Guide lokal",
       "Tiket masuk kawasan",
     ],
+
     exclude: [
       "Transportasi menuju dermaga",
       "Penginapan",
@@ -30,43 +34,62 @@ export const paketList: PaketWisata[] = [
       "Oleh-oleh",
       "Asuransi perjalanan",
     ],
-    fasilitas: ["Kapal Motor", "Life Jacket", "Snorkel Set", "Makan Siang"],
+
+    fasilitas: [
+      "Kapal Motor",
+      "Life Jacket",
+      "Snorkel Set",
+      "Makan Siang",
+    ],
+
     gambar: "/images/paket-basic.jpg",
+
     badge: "HEMAT",
+
     isPopuler: false,
     isRecommended: false,
+
     jadwal: "Setiap Sabtu & Minggu",
+
     meetingPoint: "Dermaga Ketapang, Bandar Lampung",
+
     minPeserta: 10,
     maxPeserta: 25,
   },
+
   {
     id: "open-trip-premium",
+
     nama: "Open Trip Premium",
+
     deskripsi:
       "Pengalaman wisata bahari lengkap dengan fasilitas premium dan dokumentasi profesional.",
+
     harga: 325000,
     hargaCoret: 425000,
+
     durasi: "1 Hari (06:30 - 18:00)",
+
     peserta: "Min. 8 orang",
+
     include: [
       "Transportasi kapal boat premium PP",
       "Snorkeling di 5 spot eksklusif",
-      "Kunjungan Gosong Sekopong & Tanjung Putus",
+      "Kunjungan Gosong Sekopong",
       "Peralatan snorkeling premium",
       "Makan siang & snack",
-      "Fotografer underwater profesional",
-      "Hasil foto 30+ editing (Google Drive)",
-      "Guide bersertifikat BNSP",
-      "Tiket masuk semua destinasi",
+      "Fotografer underwater",
+      "Hasil foto editing",
+      "Guide bersertifikat",
       "Asuransi perjalanan",
     ],
+
     exclude: [
       "Transportasi menuju dermaga",
       "Penginapan",
       "Oleh-oleh",
-      "Diving equipment (bisa sewa tambahan)",
     ],
+
     fasilitas: [
       "Kapal Boat Premium",
       "Underwater Camera",
@@ -74,82 +97,103 @@ export const paketList: PaketWisata[] = [
       "Makan + Snack",
       "Asuransi",
     ],
+
     gambar: "/images/paket-premium.jpg",
+
     badge: "TERPOPULER",
+
     isPopuler: true,
     isRecommended: true,
-    jadwal: "Setiap hari (minimal booking H-2)",
+
+    jadwal: "Setiap hari",
+
     meetingPoint: "Dermaga Ketapang, Bandar Lampung",
+
     minPeserta: 8,
     maxPeserta: 20,
   },
+
   {
     id: "private-trip",
+
     nama: "Private Trip Exclusive",
+
     deskripsi:
-      "Trip privat eksklusif dengan kapal sendiri, jadwal fleksibel, dan layanan VIP terbaik.",
+      "Trip privat eksklusif dengan kapal sendiri dan layanan VIP.",
+
     harga: 1200000,
+
     durasi: "Custom (maks. 12 jam)",
+
     peserta: "2 - 15 orang",
+
     include: [
-      "Kapal eksklusif hanya untuk grup Anda",
-      "Akses semua destinasi di kepulauan Pahawang",
-      "Snorkeling & diving spot premium",
-      "Peralatan snorkeling & diving lengkap",
-      "Makan siang prasmanan + 2x snack",
-      "2 Fotografer & videografer profesional",
-      "Drone footage (30 menit)",
-      "Hasil foto & video editing full",
-      "Pemandu senior bersertifikat",
-      "Butler service di atas kapal",
-      "First aid kit & emergency equipment",
-      "Asuransi perjalanan premium",
+      "Kapal eksklusif",
+      "Akses semua destinasi",
+      "Snorkeling & diving",
+      "Makan siang + snack",
+      "Drone footage",
+      "Fotografer profesional",
+      "Butler service",
     ],
-    exclude: ["Transportasi menuju dermaga", "Penginapan", "Oleh-oleh"],
+
+    exclude: [
+      "Transportasi menuju dermaga",
+      "Penginapan",
+    ],
+
     fasilitas: [
       "Kapal Eksklusif",
       "Drone",
       "Full Photography",
       "Butler Service",
-      "Asuransi Premium",
     ],
+
     gambar: "/images/paket-private.jpg",
+
     badge: "EKSKLUSIF",
+
     isPopuler: false,
     isRecommended: false,
-    jadwal: "Setiap hari (minimal booking H-3)",
-    meetingPoint: "Custom (bisa jemput hotel)",
+
+    jadwal: "Setiap hari",
+
+    meetingPoint: "Custom",
+
     minPeserta: 2,
     maxPeserta: 15,
   },
+
   {
     id: "menginap-2d1n",
+
     nama: "Paket Menginap 2D1N",
+
     deskripsi:
-      "Nikmati keajaiban Pahawang semalam penuh — sunset, bintang, dan sunrise tak terlupakan.",
+      "Nikmati keajaiban Pahawang semalam penuh dengan sunset dan sunrise.",
+
     harga: 550000,
     hargaCoret: 750000,
+
     durasi: "2 Hari 1 Malam",
+
     peserta: "Min. 6 orang",
+
     include: [
       "Transportasi kapal PP",
-      "Penginapan cottage tepi pantai (1 malam)",
-      "Snorkeling di semua spot utama",
-      "Makan 3x (siang, malam, pagi)",
-      "BBQ seafood malam",
+      "Penginapan cottage",
+      "Snorkeling spot utama",
+      "Makan 3x",
+      "BBQ seafood",
       "Sunset boat tour",
-      "Stargazing session",
       "Sunrise photography",
-      "Peralatan snorkeling",
-      "Guide 24 jam",
-      "Tiket masuk kawasan",
     ],
+
     exclude: [
       "Transportasi menuju dermaga",
       "Oleh-oleh",
-      "Diving equipment",
-      "Asuransi tambahan",
     ],
+
     fasilitas: [
       "Penginapan",
       "BBQ Seafood",
@@ -157,21 +201,39 @@ export const paketList: PaketWisata[] = [
       "Sunrise",
       "Snorkeling",
     ],
+
     gambar: "/images/paket-menginap.jpg",
+
     badge: "BEST VALUE",
+
     isPopuler: true,
     isRecommended: false,
-    jadwal: "Jumat - Sabtu / Sabtu - Minggu",
+
+    jadwal: "Jumat - Minggu",
+
     meetingPoint: "Dermaga Ketapang, Bandar Lampung",
+
     minPeserta: 6,
     maxPeserta: 20,
   },
 ];
 
-export function getPaketById(id: string): PaketWisata | undefined {
+// ============================================================
+// HELPERS
+// ============================================================
+
+export function getPaketById(
+  id: string
+): PaketWisata | undefined {
   return paketList.find((p) => p.id === id);
 }
 
-export function getPopulerPaket(): PaketWisata[] {
+// DIPAKAI DI COMPONENT
+export function getPaketPopular(): PaketWisata[] {
   return paketList.filter((p) => p.isPopuler);
+}
+
+// OPTIONAL
+export function getRecommendedPaket(): PaketWisata[] {
+  return paketList.filter((p) => p.isRecommended);
 }
