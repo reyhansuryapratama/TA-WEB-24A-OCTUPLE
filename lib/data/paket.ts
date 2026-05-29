@@ -1,60 +1,112 @@
+import type {
+  PaketWisata,
+  ItineraryItem,
+} from "@/types";
+
 // ============================================================
-// PAHAWANG WISATA — Data Paket Wisata
+// DATA
 // ============================================================
 
-import { PaketWisata } from "@/types";
-
-export const paketList: PaketWisata[] = [
+export const paketData: PaketWisata[] = [
   {
     id: "open-trip-basic",
+
     nama: "Open Trip Basic",
+
     deskripsi:
-      "Paket terjangkau untuk menjelajahi keindahan Pahawang bersama traveler lainnya.",
+      "Paket hemat untuk menikmati keindahan Pulau Pahawang bersama traveler lainnya.",
 
     harga: 175000,
+
     hargaCoret: 225000,
 
-    durasi: "1 Hari (07:00 - 17:00)",
+    durasi: "1 Hari",
+
     peserta: "Min. 10 orang",
 
     include: [
-      "Transportasi kapal PP dari Dermaga Ketapang",
-      "Snorkeling di 3 spot terbaik",
-      "Peralatan snorkeling (masker, fin, life jacket)",
-      "Makan siang 1x",
-      "Dokumentasi foto",
-      "Guide lokal",
-      "Tiket masuk kawasan",
+      "Transportasi kapal",
+      "Alat snorkeling",
+      "Makan siang",
+      "Guide wisata",
     ],
 
     exclude: [
-      "Transportasi menuju dermaga",
+      "Transportasi ke dermaga",
       "Penginapan",
-      "Makan malam",
-      "Oleh-oleh",
-      "Asuransi perjalanan",
     ],
 
     fasilitas: [
-      "Kapal Motor",
-      "Life Jacket",
-      "Snorkel Set",
-      "Makan Siang",
+      "Kapal wisata",
+      "Life jacket",
+      "Snorkeling set",
     ],
 
-    gambar: "/images/paket-basic.jpg",
+    gambar:
+      "/images/paket-basic.jpg",
 
     badge: "HEMAT",
 
-    isPopuler: false,
+    popular: false,
+
     isRecommended: false,
 
-    jadwal: "Setiap Sabtu & Minggu",
+    jadwal:
+      "Sabtu & Minggu",
 
-    meetingPoint: "Dermaga Ketapang, Bandar Lampung",
+    meetingPoint:
+      "Dermaga Ketapang",
 
     minPeserta: 10,
+
     maxPeserta: 25,
+
+    itinerary: [
+      {
+        waktu: "07:00",
+        aktivitas:
+          "Meeting point di Dermaga Ketapang",
+
+        lokasi:
+          "Dermaga Ketapang",
+      },
+
+      {
+        waktu: "08:30",
+        aktivitas:
+          "Perjalanan menuju Pulau Pahawang",
+
+        lokasi:
+          "Perairan Pahawang",
+      },
+
+      {
+        waktu: "10:00",
+        aktivitas:
+          "Snorkeling dan eksplorasi spot terumbu karang",
+
+        lokasi:
+          "Pahawang Kecil",
+      },
+
+      {
+        waktu: "12:00",
+        aktivitas:
+          "Makan siang dan istirahat",
+
+        lokasi:
+          "Pulau Kelagian",
+      },
+
+      {
+        waktu: "15:00",
+        aktivitas:
+          "Kembali ke dermaga",
+
+        lokasi:
+          "Dermaga Ketapang",
+      },
+    ],
   },
 
   {
@@ -63,160 +115,109 @@ export const paketList: PaketWisata[] = [
     nama: "Open Trip Premium",
 
     deskripsi:
-      "Pengalaman wisata bahari lengkap dengan fasilitas premium dan dokumentasi profesional.",
+      "Paket premium dengan fasilitas lebih lengkap dan pengalaman wisata eksklusif.",
 
     harga: 325000,
+
     hargaCoret: 425000,
 
-    durasi: "1 Hari (06:30 - 18:00)",
+    durasi: "1 Hari",
 
     peserta: "Min. 8 orang",
 
     include: [
-      "Transportasi kapal boat premium PP",
-      "Snorkeling di 5 spot eksklusif",
-      "Kunjungan Gosong Sekopong",
-      "Peralatan snorkeling premium",
-      "Makan siang & snack",
-      "Fotografer underwater",
-      "Hasil foto editing",
-      "Guide bersertifikat",
-      "Asuransi perjalanan",
+      "Boat premium",
+      "Alat snorkeling premium",
+      "Makan siang",
+      "Fotografer",
+      "Drone documentation",
     ],
 
     exclude: [
-      "Transportasi menuju dermaga",
-      "Penginapan",
-      "Oleh-oleh",
+      "Transportasi ke dermaga",
     ],
 
     fasilitas: [
-      "Kapal Boat Premium",
-      "Underwater Camera",
-      "Snorkel Premium",
-      "Makan + Snack",
-      "Asuransi",
+      "Boat premium",
+      "Kamera underwater",
+      "Drone",
+      "Snack & drink",
     ],
 
-    gambar: "/images/paket-premium.jpg",
+    gambar:
+      "/images/paket-premium.jpg",
 
     badge: "TERPOPULER",
 
-    isPopuler: true,
+    popular: true,
+
     isRecommended: true,
 
-    jadwal: "Setiap hari",
+    jadwal:
+      "Setiap Hari",
 
-    meetingPoint: "Dermaga Ketapang, Bandar Lampung",
+    meetingPoint:
+      "Dermaga Ketapang",
 
     minPeserta: 8,
+
     maxPeserta: 20,
-  },
 
-  {
-    id: "private-trip",
+    itinerary: [
+      {
+        waktu: "07:00",
+        aktivitas:
+          "Briefing dan keberangkatan",
 
-    nama: "Private Trip Exclusive",
+        lokasi:
+          "Dermaga Ketapang",
+      },
 
-    deskripsi:
-      "Trip privat eksklusif dengan kapal sendiri dan layanan VIP.",
+      {
+        waktu: "09:00",
+        aktivitas:
+          "Snorkeling premium spot",
 
-    harga: 1200000,
+        lokasi:
+          "Cukuh Bedil",
+      },
 
-    durasi: "Custom (maks. 12 jam)",
+      {
+        waktu: "11:00",
+        aktivitas:
+          "Foto drone & underwater session",
 
-    peserta: "2 - 15 orang",
+        lokasi:
+          "Pahawang Besar",
+      },
 
-    include: [
-      "Kapal eksklusif",
-      "Akses semua destinasi",
-      "Snorkeling & diving",
-      "Makan siang + snack",
-      "Drone footage",
-      "Fotografer profesional",
-      "Butler service",
+      {
+        waktu: "12:30",
+        aktivitas:
+          "Makan siang seafood",
+
+        lokasi:
+          "Pulau Kelagian",
+      },
+
+      {
+        waktu: "15:30",
+        aktivitas:
+          "Sunset trip & kembali",
+
+        lokasi:
+          "Dermaga Ketapang",
+      },
     ],
-
-    exclude: [
-      "Transportasi menuju dermaga",
-      "Penginapan",
-    ],
-
-    fasilitas: [
-      "Kapal Eksklusif",
-      "Drone",
-      "Full Photography",
-      "Butler Service",
-    ],
-
-    gambar: "/images/paket-private.jpg",
-
-    badge: "EKSKLUSIF",
-
-    isPopuler: false,
-    isRecommended: false,
-
-    jadwal: "Setiap hari",
-
-    meetingPoint: "Custom",
-
-    minPeserta: 2,
-    maxPeserta: 15,
-  },
-
-  {
-    id: "menginap-2d1n",
-
-    nama: "Paket Menginap 2D1N",
-
-    deskripsi:
-      "Nikmati keajaiban Pahawang semalam penuh dengan sunset dan sunrise.",
-
-    harga: 550000,
-    hargaCoret: 750000,
-
-    durasi: "2 Hari 1 Malam",
-
-    peserta: "Min. 6 orang",
-
-    include: [
-      "Transportasi kapal PP",
-      "Penginapan cottage",
-      "Snorkeling spot utama",
-      "Makan 3x",
-      "BBQ seafood",
-      "Sunset boat tour",
-      "Sunrise photography",
-    ],
-
-    exclude: [
-      "Transportasi menuju dermaga",
-      "Oleh-oleh",
-    ],
-
-    fasilitas: [
-      "Penginapan",
-      "BBQ Seafood",
-      "Sunset Tour",
-      "Sunrise",
-      "Snorkeling",
-    ],
-
-    gambar: "/images/paket-menginap.jpg",
-
-    badge: "BEST VALUE",
-
-    isPopuler: true,
-    isRecommended: false,
-
-    jadwal: "Jumat - Minggu",
-
-    meetingPoint: "Dermaga Ketapang, Bandar Lampung",
-
-    minPeserta: 6,
-    maxPeserta: 20,
   },
 ];
+
+// ============================================================
+// ALIAS
+// ============================================================
+
+export const paketList =
+  paketData;
 
 // ============================================================
 // HELPERS
@@ -225,15 +226,19 @@ export const paketList: PaketWisata[] = [
 export function getPaketById(
   id: string
 ): PaketWisata | undefined {
-  return paketList.find((p) => p.id === id);
+  return paketData.find(
+    (paket) => paket.id === id
+  );
 }
 
-// DIPAKAI DI COMPONENT
 export function getPaketPopular(): PaketWisata[] {
-  return paketList.filter((p) => p.isPopuler);
+  return paketData.filter(
+    (paket) => paket.popular
+  );
 }
 
-// OPTIONAL
 export function getRecommendedPaket(): PaketWisata[] {
-  return paketList.filter((p) => p.isRecommended);
+  return paketData.filter(
+    (paket) => paket.isRecommended
+  );
 }
