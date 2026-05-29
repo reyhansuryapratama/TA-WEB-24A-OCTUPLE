@@ -1,214 +1,262 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Destinasi } from "@/types";
+
 import { formatCurrency } from "@/lib/utils";
 
-import Badge from "@/components/ui/Badge";
+import Badge, {
+  BadgeVariant,
+} from "@/components/ui/Badge";
 
 interface DestinasiCardProps {
   destinasi: Destinasi;
   index?: number;
 }
 
-const kategoriLabel = {
-  snorkeling: "Snorkeling",
-  diving: "Diving",
-  island: "Pulau",
-  beach: "Pantai",
-  camping: "Camping",
-} as const;
+/* =========================================================
+   CATEGORY
+========================================================= */
 
-const kategoriColor = {
-  snorkeling: "teal",
-  diving: "ocean",
-  island: "coral",
-  beach: "sand",
-  camping: "sand",
-} as const;
+const kategoriMap: Record<
+  string,
+  {
+    label: string;
+    color: BadgeVariant;
+  }
+> = {
+  snorkeling: {
+    label: "Snorkeling",
+    color: "teal",
+  },
+
+  diving: {
+    label: "Diving",
+    color: "ocean",
+  },
+
+  pantai: {
+    label: "Pantai",
+    color: "sand",
+  },
+
+  mangrove: {
+    label: "Mangrove",
+    color: "teal",
+  },
+
+  sunset: {
+    label: "Sunset",
+    color: "coral",
+  },
+
+  island: {
+    label: "Island",
+    color: "ocean",
+  },
+
+  beach: {
+    label: "Beach",
+    color: "sand",
+  },
+
+  camping: {
+    label: "Camping",
+    color: "coral",
+  },
+};
 
 export default function DestinasiCard({
   destinasi,
   index = 0,
 }: DestinasiCardProps) {
+  const kategori =
+    kategoriMap[destinasi.kategori] || {
+      label: destinasi.kategori,
+      color: "ocean" as BadgeVariant,
+    };
+
   return (
     <Link
       href={`/destinasi/${destinasi.slug}`}
       className="
         group
+        relative
         block
-        bg-white
-        rounded-2xl
         overflow-hidden
-        shadow-[var(--shadow-card)]
+        rounded-[28px]
+        bg-white/90
+        backdrop-blur-xl
         border
-        border-[var(--color-border)]
-        hover:shadow-[var(--shadow-card-hover)]
+        border-white/40
+        shadow-[0_10px_40px_rgba(15,23,42,0.08)]
         transition-all
-        duration-300
-        hover:-translate-y-1
+        duration-500
+        hover:-translate-y-2
+        hover:shadow-[0_30px_80px_rgba(14,165,233,0.18)]
       "
     >
-      {/* ============================================================
-          Image
-      ============================================================ */}
-      <div className="relative h-52 overflow-hidden">
-        <img
-          src={destinasi.gambar}
+      {/* ======================================================
+          IMAGE
+      ====================================================== */}
+
+      <div className="relative h-[260px] overflow-hidden">
+        <Image
+          src={destinasi.gambar || "/images/placeholder.jpg"}
           alt={destinasi.nama}
+          fill
+          priority={index < 3}
+          sizes="(max-width:768px) 100vw, 33vw"
           className="
-            w-full
-            h-full
             object-cover
             transition-transform
-            duration-700
-            group-hover:scale-105
+            duration-[1400ms]
+            ease-out
+            group-hover:scale-110
           "
-          loading={index < 3 ? "eager" : "lazy"}
         />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        {/* cinematic overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-        {/* ============================================================
-            Badge
-        ============================================================ */}
-        <div className="absolute top-3 left-3 flex gap-2">
-          <Badge
-  variant={
-    kategoriColor[
-      destinasi.kategori as keyof typeof kategoriColor
-    ]
-  }
->
-  {
-    kategoriLabel[
-      destinasi.kategori as keyof typeof kategoriLabel
-    ]
-  }
-</Badge>
+        {/* ambient glow */}
+        <div className="absolute inset-0 bg-cyan-400/0 group-hover:bg-cyan-400/10 transition-colors duration-700" />
+
+        {/* badges */}
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
+          <Badge variant={kategori.color}>
+            {kategori.label}
+          </Badge>
 
           {destinasi.isFeatured && (
             <Badge variant="coral">
-              Highlight
+              Featured
             </Badge>
           )}
         </div>
 
-        {/* ============================================================
-            Rating
-        ============================================================ */}
-        <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-white/95 rounded-full px-2.5 py-1 shadow-sm">
-          <span className="text-amber-400 text-xs">
+        {/* rating */}
+        <div
+          className="
+            absolute
+            bottom-4
+            right-4
+            z-10
+            flex
+            items-center
+            gap-1.5
+            rounded-full
+            bg-white/95
+            backdrop-blur-md
+            px-3
+            py-1.5
+            shadow-lg
+          "
+        >
+          <span className="text-amber-400 text-sm">
             ★
           </span>
 
-          <span className="text-xs font-bold text-[var(--ocean-900)]">
+          <span className="text-sm font-bold text-slate-900">
             {destinasi.rating}
           </span>
 
-          <span className="text-xs text-[var(--color-text-muted)]">
+          <span className="text-xs text-slate-500">
             (
-            {destinasi.jumlahReview.toLocaleString(
+            {destinasi.jumlahReview?.toLocaleString(
               "id-ID"
-            )}
+            ) || 0}
             )
           </span>
         </div>
       </div>
 
-      {/* ============================================================
-          Content
-      ============================================================ */}
-      <div className="p-5">
-        {/* Title */}
+      {/* ======================================================
+          CONTENT
+      ====================================================== */}
+
+      <div className="p-6">
+        {/* title */}
         <h3
           className="
             font-display
+            text-[1.4rem]
+            leading-tight
             font-semibold
+            tracking-[-0.02em]
             text-[var(--ocean-900)]
-            text-lg
-            mb-1.5
-            line-clamp-1
             transition-colors
-            group-hover:text-[var(--ocean-500)]
+            duration-300
+            group-hover:text-sky-700
           "
         >
           {destinasi.nama}
         </h3>
 
-        {/* Description */}
+        {/* desc */}
         <p
           className="
-            text-sm
-            text-[var(--color-text-muted)]
-            leading-relaxed
+            mt-3
+            text-[15px]
+            leading-7
+            text-slate-600
             line-clamp-2
-            mb-4
           "
         >
           {destinasi.deskripsi}
         </p>
 
-        {/* ============================================================
-            Highlight Tags
-        ============================================================ */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        {/* highlights */}
+        <div className="mt-5 flex flex-wrap gap-2">
           {destinasi.highlight
-            .slice(0, 3)
+            ?.slice(0, 3)
             .map((item) => (
               <span
                 key={item}
                 className="
-                  text-xs
-                  bg-[var(--sand-100)]
-                  text-[var(--ocean-900)]
                   rounded-full
-                  px-2.5
-                  py-0.5
+                  bg-sky-50
+                  border
+                  border-sky-100
+                  px-3
+                  py-1
+                  text-[11px]
+                  font-medium
+                  tracking-wide
+                  text-sky-700
                 "
               >
                 {item}
               </span>
             ))}
-
-          {destinasi.highlight.length > 3 && (
-            <span
-              className="
-                text-xs
-                text-[var(--color-text-muted)]
-                px-1
-                py-0.5
-              "
-            >
-              +
-              {destinasi.highlight.length - 3}
-            </span>
-          )}
         </div>
 
-        {/* ============================================================
-            Footer
-        ============================================================ */}
+        {/* footer */}
         <div
           className="
+            mt-6
             flex
             items-center
             justify-between
-            pt-3
             border-t
-            border-[var(--color-border)]
+            border-slate-100
+            pt-5
           "
         >
-          {/* Price */}
+          {/* price */}
           <div>
-            <span className="text-xs text-[var(--color-text-muted)]">
-              Tiket masuk
-            </span>
+            <p className="text-xs uppercase tracking-wider text-slate-400">
+              Harga mulai
+            </p>
 
-            <div className="text-[var(--ocean-500)] font-bold text-sm">
-              {formatCurrency(destinasi.hargaTiket)}
+            <div className="mt-1 flex items-end gap-1">
+              <span className="text-xl font-bold text-[var(--ocean-600)]">
+                {formatCurrency(
+                  destinasi.hargaTiket || 0
+                )}
+              </span>
 
-              <span className="text-[var(--color-text-muted)] font-normal">
+              <span className="text-sm text-slate-500">
                 /orang
               </span>
             </div>
@@ -219,31 +267,46 @@ export default function DestinasiCard({
             className="
               flex
               items-center
-              gap-1
-              text-[var(--ocean-500)]
+              gap-2
               text-sm
               font-semibold
+              text-sky-700
               transition-all
-              group-hover:gap-2
+              duration-300
+              group-hover:gap-3
             "
           >
-            Lihat Detail
+            Explore
 
             <svg
-              width="16"
-              height="16"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
+              className="transition-transform duration-300 group-hover:translate-x-1"
             >
               <path d="m9 18 6-6-6-6" />
             </svg>
           </div>
         </div>
       </div>
+
+      {/* subtle border glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          rounded-[28px]
+          ring-1
+          ring-inset
+          ring-white/20
+        "
+      />
     </Link>
   );
 }
