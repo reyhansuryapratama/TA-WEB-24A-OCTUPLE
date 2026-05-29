@@ -1,79 +1,134 @@
 "use client";
 
-import { useScrollAnimation } from "@/lib/hooks/useScrollAnimation";
-import SectionHeader from "@/components/ui/SectionHeader";
-import DestinasiCard from "@/components/cards/DestinasiCard";
-import Button from "@/components/ui/Button";
-import { getDestinasiHighlight } from "@/lib/data/destinasi";
-import Link from "next/link";
+interface SectionHeaderProps {
+  eyebrow?: string;
+  title: string;
+  titleHighlight?: string;
+  description?: string;
+  light?: boolean;
+  align?: "left" | "center";
+  className?: string;
+}
 
-export default function DestinasiSection() {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.05 });
-  const destinasiHighlight = getDestinasiHighlight();
-
+export default function SectionHeader({
+  eyebrow,
+  title,
+  titleHighlight,
+  description,
+  light = false,
+  align = "center",
+  className = "",
+}: SectionHeaderProps) {
   return (
-    <section className="section-py bg-[var(--bg-primary)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+    <div
+      className={`
+        relative
+        ${align === "center" ? "mx-auto text-center" : "text-left"}
+        ${className}
+      `}
+    >
+      {/* Eyebrow */}
+      {eyebrow && (
         <div
-          ref={ref}
-          className={`flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`
+            mb-5 flex items-center gap-3
+            ${align === "center" ? "justify-center" : "justify-start"}
+          `}
         >
-          <SectionHeader
-            eyebrow="Destinasi Wisata"
-            title="Jelajahi Keajaiban"
-            titleHighlight="Pahawang"
-            description="Dari pulau utama hingga pasir timbul yang ikonik — setiap sudut Pahawang menyimpan cerita."
-            align="left"
+          <span
+            className={`
+              h-px w-10 rounded-full
+              ${
+                light
+                  ? "bg-white/40"
+                  : "bg-[var(--ocean-bright)]"
+              }
+            `}
           />
 
-          <Link href="/destinasi" className="shrink-0">
-            <Button
-              variant="outline"
-              size="md"
-              icon={
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="m9 18 6-6-6-6"/>
-                </svg>
+          <span
+            className={`
+              text-[11px] sm:text-xs
+              uppercase tracking-[0.28em]
+              font-semibold
+              ${
+                light
+                  ? "text-white/70"
+                  : "text-[var(--ocean-bright)]"
               }
-              iconPosition="right"
-            >
-              Lihat Semua Destinasi
-            </Button>
-          </Link>
+            `}
+          >
+            {eyebrow}
+          </span>
         </div>
+      )}
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {destinasiHighlight.map((destinasi, idx) => (
-            <div
-              key={destinasi.id}
-              className={`transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-              style={{ transitionDelay: `${idx * 100}ms` }}
-            >
-              <DestinasiCard destinasi={destinasi} index={idx} />
-            </div>
-          ))}
-        </div>
+      {/* Title */}
+      <h2
+        className={`
+          text-display-lg
+          leading-[1.05]
+          font-bold
+          tracking-[-0.03em]
+          max-w-3xl
+          ${
+            align === "center" ? "mx-auto" : ""
+          }
+          ${
+            light
+              ? "text-white"
+              : "text-[var(--text-primary)]"
+          }
+        `}
+      >
+        {title}{" "}
 
-        {/* Bottom CTA */}
-        <div className={`text-center mt-12 transition-all duration-700 delay-500 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}>
-          <p className="text-[var(--text-secondary)] mb-5">
-            Masih ada <strong>6 destinasi</strong> menakjubkan lainnya menanti Anda
-          </p>
-          <Link href="/destinasi">
-            <Button variant="primary" size="lg">
-              Lihat Semua Destinasi
-            </Button>
-          </Link>
-        </div>
-      </div>
-    </section>
+        {titleHighlight && (
+          <span className="text-gradient-ocean relative inline-block">
+            {titleHighlight}
+
+            {/* Glow */}
+            <span
+              className="
+                absolute
+                inset-x-0
+                -bottom-2
+                h-4
+                rounded-full
+                bg-cyan-300/20
+                blur-xl
+                -z-10
+              "
+            />
+          </span>
+        )}
+      </h2>
+
+      {/* Description */}
+      {description && (
+        <p
+          className={`
+            mt-6
+            text-[15px]
+            sm:text-base
+            leading-8
+            max-w-2xl
+            font-normal
+            ${
+              align === "center"
+                ? "mx-auto"
+                : ""
+            }
+            ${
+              light
+                ? "text-white/75"
+                : "text-[var(--text-secondary)]"
+            }
+          `}
+        >
+          {description}
+        </p>
+      )}
+    </div>
   );
 }
