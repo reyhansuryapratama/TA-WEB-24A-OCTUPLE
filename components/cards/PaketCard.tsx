@@ -1,27 +1,24 @@
 import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Button } from "../ui/Button"; 
+import Button from "@/components/ui/Button";
+import { PaketWisata } from "@/types";
+
+// ============================================================
+// PAHAWANG WISATA — Paket Card
+// ============================================================
 
 interface PaketCardProps {
-  title: string;
-  duration: string;
-  price: number;
-  rating: number;
-  imageUrl: string;
-  features: string[];
+  paket: PaketWisata;
+  featured?: boolean;
   className?: string;
 }
 
-export const PaketCard: React.FC<PaketCardProps> = ({
-  title,
-  duration,
-  price,
-  rating,
-  imageUrl,
-  features,
+export default function PaketCard({
+  paket,
+  featured = false,
   className,
-}) => {
+}: PaketCardProps) {
   const formatRupiah = (value: number) => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -31,50 +28,107 @@ export const PaketCard: React.FC<PaketCardProps> = ({
   };
 
   return (
-    <div className={cn("flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl", className)}>
+    <div
+      className={cn(
+        "group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl",
+        featured &&
+          "ring-2 ring-[var(--teal-400)] shadow-xl scale-[1.01]",
+        className
+      )}
+    >
       {/* Image Section */}
-      <div className="relative h-52 w-full">
-        <Image 
-          src={imageUrl} 
-          alt={title} 
+      <div className="relative h-52 w-full overflow-hidden">
+        <Image
+          src={paket.gambar}
+          alt={paket.nama}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover" 
+          sizes="(max-width: 768px) 100vw,
+                 (max-width: 1200px) 50vw,
+                 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        {/* Diubah ke bg-linear-to-t sesuai aturan Tailwind v4 */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent z-10" />
-        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white z-20">
-          <span className="text-sm font-medium bg-white/20 backdrop-blur-md px-2.5 py-0.5 rounded-md">
-            {duration}
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
+
+        {/* Featured Badge */}
+        {featured && (
+          <div className="absolute left-4 top-4 z-20 rounded-full bg-[var(--teal-500)] px-3 py-1 text-xs font-semibold text-white shadow-lg">
+            Paket Favorit
+          </div>
+        )}
+
+        {/* Badge Paket */}
+        {paket.badge && (
+          <div className="absolute right-4 top-4 z-20 rounded-full bg-orange-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
+            {paket.badge}
+          </div>
+        )}
+
+        {/* Bottom Content */}
+        <div className="absolute bottom-3 left-4 right-4 z-20 flex items-center justify-between">
+          <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-md">
+            {paket.durasi}
           </span>
-          <div className="flex items-center gap-1 text-amber-400 text-sm font-bold bg-slate-900/40 px-2 py-0.5 rounded-md backdrop-blur-sm">
-            ⭐ {rating.toFixed(1)}
+
+          <div className="flex items-center gap-1 rounded-full bg-slate-900/50 px-3 py-1 text-xs font-bold text-amber-400 backdrop-blur-md">
+            ⭐ 4.9
           </div>
         </div>
       </div>
 
-      {/* Content Section */}
+      {/* Content */}
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="mb-2 text-lg font-bold text-slate-800 line-clamp-1">{title}</h3>
-        
-        {/* Features List */}
-        <ul className="mb-5 flex-1 space-y-1.5">
-          {features.slice(0, 3).map((feature, index) => (
-            <li key={index} className="flex items-center text-xs text-slate-600">
-              <span className="mr-2 text-green-500">✓</span> {feature}
+        {/* Title */}
+        <h3 className="mb-2 line-clamp-1 text-lg font-bold text-slate-800">
+          {paket.nama}
+        </h3>
+
+        {/* Description */}
+        <p className="mb-4 line-clamp-2 text-sm text-slate-600">
+          {paket.deskripsi}
+        </p>
+
+        {/* Features */}
+        <ul className="mb-5 flex-1 space-y-2">
+          {paket.fasilitas.slice(0, 3).map((feature, index) => (
+            <li
+              key={index}
+              className="flex items-center text-sm text-slate-600"
+            >
+              <span className="mr-2 text-emerald-500">✓</span>
+
+              {feature}
             </li>
           ))}
-          {features.length > 3 && (
-            <li className="text-xs text-slate-400 italic">+{features.length - 3} fasilitas lainnya</li>
+
+          {paket.fasilitas.length > 3 && (
+            <li className="text-xs italic text-slate-400">
+              +{paket.fasilitas.length - 3} fasilitas lainnya
+            </li>
           )}
         </ul>
 
-        {/* Price & Action */}
-        <div className="mt-auto border-t border-slate-100 pt-4 flex items-center justify-between">
+        {/* Footer */}
+        <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-4">
           <div>
-            <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Mulai dari</p>
-            <p className="text-lg font-extrabold text-blue-600">{formatRupiah(price)}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+              Mulai dari
+            </p>
+
+            <div className="flex flex-col">
+              {paket.hargaCoret && (
+                <span className="text-xs text-slate-400 line-through">
+                  {formatRupiah(paket.hargaCoret)}
+                </span>
+              )}
+
+              <p className="text-lg font-extrabold text-blue-600">
+                {formatRupiah(paket.harga)}
+              </p>
+            </div>
           </div>
+
           <Button variant="primary" size="md">
             Pesan Paket
           </Button>
@@ -82,4 +136,4 @@ export const PaketCard: React.FC<PaketCardProps> = ({
       </div>
     </div>
   );
-};
+}
