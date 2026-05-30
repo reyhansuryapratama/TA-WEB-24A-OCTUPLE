@@ -1,272 +1,270 @@
+import type { Metadata } from "next";
+
+import { destinasiList } from "@/lib/data/destinasi";
+
+import DestinasiCard from "@/components/cards/DestinasiCard";
+
+import SectionHeader from "@/components/ui/SectionHeader";
+
 // ============================================================
-// PAHAWANG WISATA — DATA DESTINASI
+// METADATA
 // ============================================================
 
-import { Destinasi } from "@/types";
+export const metadata: Metadata = {
+  metadataBase: new URL("https://yourdomain.com"),
 
-/* ============================================================
-   DESTINASI LIST
-============================================================ */
+  title: "Destinasi Wisata Pahawang",
 
-export const destinasiList: Destinasi[] = [
+  description:
+    "Temukan semua destinasi wisata bahari terbaik di Pulau Pahawang Lampung.",
+};
+
+// ============================================================
+// KATEGORI
+// ============================================================
+
+const kategoriList = [
   {
-    id: "1",
-
-    slug: "pulau-pahawang-besar",
-
-    nama: "Pulau Pahawang Besar",
-
-    deskripsi:
-      "Surga tersembunyi di Teluk Lampung dengan air kristal dan terumbu karang yang memukau.",
-
-    deskripsiPanjang: `
-Pulau Pahawang Besar adalah destinasi utama yang menawarkan pengalaman wisata bahari tak terlupakan.
-
-Dengan luas sekitar 1.084 hektar, pulau ini menyimpan kekayaan alam bawah laut yang luar biasa — terumbu karang beraneka warna, ikan tropis, dan ekosistem mangrove yang masih terjaga.
-
-Air laut yang jernih dengan visibilitas hingga 10 meter menjadikan Pahawang Besar surga bagi para penyelam dan penggemar snorkeling.
-
-Pantai berpasir putih dengan pohon kelapa berjajar indah menjadi latar sempurna untuk bersantai dan menikmati keindahan alam Lampung.
-`,
-
-    gambar: "/images/pahawang-besar.jpg",
-
-    gambarGaleri: [
-      "/images/pahawang-besar-1.jpg",
-      "/images/pahawang-besar-2.jpg",
-      "/images/pahawang-besar-3.jpg",
-      "/images/pahawang-besar-4.jpg",
-    ],
-
-    kategori: "snorkeling",
-
-    rating: 4.9,
-
-    jumlahReview: 2847,
-
-    lokasi: "Padang Cermin, Pesawaran, Lampung",
-
-    koordinat: {
-      lat: -5.6234,
-      lng: 105.2156,
-    },
-
-    hargaTiket: 25000,
-
-    waktuOperasional: "07:00 - 17:00 WIB",
-
-    fasilitas: [
-      "Toilet & Kamar Mandi",
-      "Warung Makan",
-      "Penginapan",
-      "Penyewaan Alat Snorkel",
-      "Parkir Kapal",
-      "WiFi Area",
-    ],
-
-    highlight: [
-      "Air laut kristal dengan visibilitas 10m",
-      "Terumbu karang indah",
-      "Pantai berpasir putih sepanjang 2km",
-      "Spot sunset terbaik di Lampung",
-    ],
-
-    tips: [
-      "Datang pagi hari untuk mendapat kondisi air terbaik",
-      "Bawa sunscreen reef-safe agar ekosistem terjaga",
-      "Musim terbaik: April - Oktober",
-      "Bawa uang tunai karena sinyal terbatas",
-    ],
-
-    isFeatured: true,
+    value: "all",
+    label: "Semua",
+    icon: "🌊",
   },
 
-  // ========================================================
-
   {
-    id: "2",
-
-    slug: "pulau-pahawang-kecil",
-
-    nama: "Pulau Pahawang Kecil",
-
-    deskripsi:
-      "Pulau mungil eksotis dengan laguna tersembunyi dan pasir putih yang memesona.",
-
-    deskripsiPanjang: `
-Pulau Pahawang Kecil menawarkan ketenangan dan keindahan alam yang lebih intim dibanding saudaranya.
-
-Dikelilingi perairan dangkal berwarna toska, pulau ini memiliki laguna tersembunyi yang hanya bisa dicapai saat air surut.
-
-Spot snorkeling di sekitar pulau ini terkenal dengan kelimpahan ikan Napoleon, penyu hijau, dan berbagai jenis terumbu karang keras maupun lunak.
-
-Suasana yang lebih sepi menjadikannya pilihan sempurna bagi mereka yang mencari ketenangan jauh dari keramaian.
-`,
-
-    gambar: "/images/pahawang-kecil.jpg",
-
-    gambarGaleri: [
-      "/images/pahawang-kecil-1.jpg",
-      "/images/pahawang-kecil-2.jpg",
-      "/images/pahawang-kecil-3.jpg",
-      "/images/pahawang-kecil-4.jpg",
-    ],
-
-    kategori: "snorkeling",
-
-    rating: 4.8,
-
-    jumlahReview: 1523,
-
-    lokasi: "Padang Cermin, Pesawaran, Lampung",
-
-    koordinat: {
-      lat: -5.6312,
-      lng: 105.2089,
-    },
-
-    hargaTiket: 20000,
-
-    waktuOperasional: "07:00 - 16:00 WIB",
-
-    fasilitas: [
-      "Toilet",
-      "Warung Makan",
-      "Penyewaan Alat Snorkel",
-      "Gazebo",
-    ],
-
-    highlight: [
-      "Laguna tersembunyi eksklusif",
-      "Penyu hijau liar",
-      "Lebih sepi dan tenang",
-      "Air dangkal berwarna toska",
-    ],
-
-    tips: [
-      "Kunjungi saat air surut untuk laguna tersembunyi",
-      "Bawa makanan sendiri karena warung terbatas",
-      "Cocok untuk foto underwater",
-    ],
-
-    isFeatured: true,
+    value: "snorkeling",
+    label: "Snorkeling",
+    icon: "🤿",
   },
 
-  // ========================================================
+  {
+    value: "diving",
+    label: "Diving",
+    icon: "🐠",
+  },
 
   {
-    id: "3",
+    value: "pantai",
+    label: "Pantai",
+    icon: "🏖️",
+  },
 
-    slug: "tanjung-putus",
+  {
+    value: "mangrove",
+    label: "Mangrove",
+    icon: "🌿",
+  },
 
-    nama: "Tanjung Putus",
-
-    deskripsi:
-      "Semenanjung magis yang terputus saat air pasang dan menciptakan fenomena alam menakjubkan.",
-
-    deskripsiPanjang: `
-Tanjung Putus adalah fenomena alam unik yang wajib dikunjungi.
-
-Saat air surut, sebuah jalan pasir putih memanjang muncul menghubungkan dua daratan dan menciptakan pemandangan yang sangat indah.
-
-Saat air pasang, jalur ini tenggelam dan menciptakan efek “tanjung yang terputus”.
-
-Area ini juga dikenal sebagai salah satu spot diving terbaik di Pahawang dengan dinding karang vertikal yang dihuni aneka biota laut langka.
-`,
-
-    gambar: "/images/tanjung-putus.jpg",
-
-    gambarGaleri: [
-      "/images/tanjung-putus-1.jpg",
-      "/images/tanjung-putus-2.jpg",
-      "/images/tanjung-putus-3.jpg",
-      "/images/tanjung-putus-4.jpg",
-    ],
-
-    kategori: "diving",
-
-    rating: 4.7,
-
-    jumlahReview: 987,
-
-    lokasi: "Pesawaran, Lampung",
-
-    koordinat: {
-      lat: -5.6156,
-      lng: 105.2234,
-    },
-
-    hargaTiket: 30000,
-
-    waktuOperasional: "06:00 - 17:00 WIB",
-
-    fasilitas: [
-      "Gazebo",
-      "Warung Ringan",
-      "Pemandu Dive",
-    ],
-
-    highlight: [
-      "Fenomena pasir timbul unik",
-      "Wall diving spektakuler",
-      "Kuda laut pygmy",
-      "Sunset panorama 360°",
-    ],
-
-    tips: [
-      "Cek jadwal pasang-surut sebelum berangkat",
-      "Datang jam 06.00 untuk foto terbaik",
-      "Wajib diving certification untuk wall dive",
-    ],
-
-    isFeatured: true,
+  {
+    value: "sunset",
+    label: "Sunset",
+    icon: "🌅",
   },
 ];
 
+// ============================================================
+// TYPES
+// ============================================================
 
-export function getDestinasiBySlug(
-  slug: string
-): Destinasi | undefined {
-  return destinasiList.find(
-    (item) => item.slug === slug
-  );
+interface PageProps {
+  searchParams: Promise<{
+    kategori?: string;
+  }>;
 }
 
-/* ============================================================
-   FEATURED DESTINASI
-============================================================ */
+// ============================================================
+// PAGE
+// ============================================================
 
-export function getFeaturedDestinasi(): Destinasi[] {
-  return destinasiList.filter(
-    (item) => item.isFeatured
+export default async function DestinasiPage({
+  searchParams,
+}: PageProps) {
+  // WAJIB await searchParams di Next.js terbaru
+  const params = await searchParams;
+
+  const selectedKategori =
+    params?.kategori ?? "all";
+
+  const filtered =
+    selectedKategori === "all"
+      ? destinasiList
+      : destinasiList.filter(
+          (d) =>
+            d.kategori === selectedKategori
+        );
+
+  return (
+    <div className="min-h-screen bg-[var(--bg-primary)] overflow-hidden">
+      {/* ===================================================== */}
+      {/* HERO */}
+      {/* ===================================================== */}
+
+      <section className="relative pt-36 pb-24 overflow-hidden bg-ocean-gradient">
+        {/* ambient light */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-120px] right-[-120px] w-[420px] h-[420px] rounded-full bg-cyan-400/20 blur-3xl" />
+
+          <div className="absolute bottom-[-140px] left-[-120px] w-[340px] h-[340px] rounded-full bg-sky-300/20 blur-3xl" />
+        </div>
+
+        {/* mesh */}
+        <div className="absolute inset-0 opacity-[0.06] ocean-pattern" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 text-sm text-white/90 mb-6">
+              <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse" />
+
+              Luxury Island Experience
+            </div>
+
+            <SectionHeader
+              eyebrow="Wisata Bahari Lampung"
+              title="Destinasi Wisata"
+              titleHighlight="Pahawang"
+              description={`${destinasiList.length} destinasi tropis premium untuk pengalaman liburan yang lebih eksklusif.`}
+            />
+
+            <p className="mt-6 text-white/70 max-w-2xl mx-auto leading-relaxed text-[15px] sm:text-base">
+              Jelajahi pasir putih, laut turquoise, snorkeling eksotis,
+              dan pengalaman island hopping dengan nuansa resort internasional.
+            </p>
+          </div>
+        </div>
+
+        {/* wave */}
+        <div className="wave-bottom">
+          <svg
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,64L60,74.7C120,85,240,107,360,106.7C480,107,600,85,720,69.3C840,53,960,43,1080,53.3C1200,64,1320,96,1380,112L1440,128L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"
+              fill="var(--bg-primary)"
+            />
+          </svg>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* FILTER */}
+      {/* ===================================================== */}
+
+      <section className="sticky top-16 md:top-20 z-40 backdrop-blur-xl bg-white/70 border-b border-white/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex gap-3 overflow-x-auto py-5 scrollbar-hide">
+            {kategoriList.map((kat) => {
+              const active =
+                selectedKategori === kat.value;
+
+              return (
+                <a
+                  key={kat.value}
+                  href={
+                    kat.value === "all"
+                      ? "/destinasi"
+                      : `/destinasi?kategori=${kat.value}`
+                  }
+                  className={`
+                    shrink-0
+                    flex items-center gap-2
+                    px-5 py-3
+                    rounded-2xl
+                    text-sm font-semibold
+                    transition-all duration-300
+
+                    ${
+                      active
+                        ? "bg-[var(--ocean-deep)] text-white shadow-2xl shadow-cyan-500/20"
+                        : "bg-white/90 text-[var(--text-secondary)] border border-[rgba(255,255,255,0.6)] hover:bg-white hover:-translate-y-0.5 hover:shadow-xl"
+                    }
+                  `}
+                >
+                  <span className="text-base">
+                    {kat.icon}
+                  </span>
+
+                  {kat.label}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================== */}
+      {/* CONTENT */}
+      {/* ===================================================== */}
+
+      <section className="relative py-16 lg:py-24">
+        {/* background glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-40 left-0 w-72 h-72 bg-cyan-100 rounded-full blur-3xl opacity-40" />
+
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-100 rounded-full blur-3xl opacity-40" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {filtered.length === 0 ? (
+            <div className="text-center py-24">
+              <div className="text-6xl mb-5">
+                🌊
+              </div>
+
+              <h3 className="font-display text-3xl text-[var(--ocean-deep)] mb-3">
+                Destinasi Tidak Ditemukan
+              </h3>
+
+              <p className="text-[var(--text-secondary)]">
+                Coba pilih kategori wisata lainnya.
+              </p>
+            </div>
+          ) : (
+            <>
+              {/* top info */}
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.25em] text-[var(--text-muted)]">
+                    Explore Paradise
+                  </p>
+
+                  <h2 className="font-display text-3xl text-[var(--ocean-deep)] mt-2">
+                    Pilihan Destinasi Premium
+                  </h2>
+                </div>
+
+                <div className="glass rounded-2xl px-5 py-3 text-sm text-[var(--ocean-deep)]">
+                  Menampilkan{" "}
+                  <strong>
+                    {filtered.length}
+                  </strong>{" "}
+                  destinasi
+                </div>
+              </div>
+
+              {/* grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+                {filtered.map(
+                  (destinasi, idx) => (
+                    <div
+                      key={destinasi.id}
+                      className="animate-fade-up"
+                      style={{
+                        animationDelay: `${idx * 120}ms`,
+                      }}
+                    >
+                      <DestinasiCard
+                        destinasi={destinasi}
+                        index={idx}
+                      />
+                    </div>
+                  )
+                )}
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+    </div>
   );
 }
-
-/* ============================================================
-   DESTINASI HIGHLIGHT
-============================================================ */
-
-export function getDestinasiHighlight(): Destinasi[] {
-  return destinasiList.filter(
-    (item) => item.isFeatured
-  );
-}
-
-/* ============================================================
-   FILTER KATEGORI
-============================================================ */
-
-export function getDestinasiByKategori(
-  kategori: string
-): Destinasi[] {
-  if (
-    kategori === "all" ||
-    kategori === "semua"
-  ) {
-    return destinasiList;
-  }
-
-  return destinasiList.filter(
-    (item) => item.kategori === kategori
-  );
-}0
