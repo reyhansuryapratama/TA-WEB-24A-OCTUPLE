@@ -1,10 +1,4 @@
-import React from 'react'
 
-export default function page() {
-  return (
-    <div>page</div>
-  )
-}
 import type { Metadata } from "next";
 
 import { paketData } from "@/lib/data/paket";
