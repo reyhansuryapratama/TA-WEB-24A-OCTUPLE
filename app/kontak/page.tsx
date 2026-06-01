@@ -16,7 +16,7 @@ export const metadata: Metadata =
     "Kontak & Booking — Pahawang Wisata",
 
   description:
-    "Hubungi Pahawang Wisata untuk booking paket wisata dan informasi lainnya.",
+    "Hubungi Pahawang Wisata untuk booking paket wisata, konsultasi perjalanan, dan informasi lainnya.",
 };
 
 // ============================================================
