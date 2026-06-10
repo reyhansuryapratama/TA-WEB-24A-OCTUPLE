@@ -7,6 +7,14 @@ import Link from "next/link";
 const WHATSAPP_URL =
   "https://wa.me/6281234567890?text=Halo, saya ingin tanya tentang paket wisata Pahawang";
 
+
+const BENEFITS = [
+  "✅ Booking Mudah via WhatsApp",
+  "🎯 Harga Transparan",
+  "🔒 Pembayaran Aman",
+  "⭐ Guide Berpengalaman",
+];
+
 export default function CTASection() {
   const { ref, isVisible } = useScrollAnimation();
 
@@ -57,12 +65,7 @@ export default function CTASection() {
 
           {/* Offer badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {[
-              "✅ Booking Mudah via WhatsApp",
-              "🎯 Harga Transparan",
-              "🔒 Pembayaran Aman",
-              "⭐ Guide Berpengalaman",
-            ].map((item, idx) => (
+            {BENEFITS.map((item, idx) => (
               <span
                 key={idx}
                 className="text-sm bg-[var(--sand)] text-[var(--ocean-deep)] font-medium rounded-full px-4 py-2"
