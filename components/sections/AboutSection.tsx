@@ -41,7 +41,9 @@ export default function AboutSection() {
           <div
             ref={imgRef}
             className={`relative transition-all duration-900 ${
-              imgVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+              imgVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-12"
             }`}
           >
             {/* Main image */}
@@ -49,6 +51,7 @@ export default function AboutSection() {
               <img
                 src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=85"
                 alt="Snorkeling di Pulau Pahawang"
+                loading="lazy"
                 className="w-full h-[480px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--ocean-deep)]/40 to-transparent" />
@@ -58,11 +61,16 @@ export default function AboutSection() {
             <div className="absolute -right-6 top-8 glass-dark rounded-2xl p-4 max-w-[160px] animate-float shadow-xl">
               <div className="text-3xl mb-1">🐢</div>
               <div className="text-white text-sm font-bold">Penyu Hijau</div>
-              <div className="text-blue-200 text-xs">Berenang bebas di sini</div>
+              <div className="text-blue-200 text-xs">
+                Berenang bebas di sini
+              </div>
             </div>
 
             {/* Floating card 2 */}
-            <div className="absolute -left-6 bottom-16 glass-dark rounded-2xl p-4 max-w-[170px] shadow-xl" style={{ animation: "float 5s ease-in-out infinite 1s" }}>
+            <div
+              className="absolute -left-6 bottom-16 glass-dark rounded-2xl p-4 max-w-[170px] shadow-xl"
+              style={{ animation: "float 5s ease-in-out infinite 1s" }}
+            >
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-yellow-400">★★★★★</span>
               </div>
@@ -79,7 +87,9 @@ export default function AboutSection() {
           <div
             ref={textRef}
             className={`transition-all duration-900 delay-200 ${
-              textVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+              textVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-12"
             }`}
           >
             <SectionHeader
@@ -100,8 +110,12 @@ export default function AboutSection() {
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[var(--ocean-deep)] mb-1">{item.title}</h3>
-                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{item.desc}</p>
+                    <h3 className="font-semibold text-[var(--ocean-deep)] mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               ))}
