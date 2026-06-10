@@ -7,13 +7,15 @@ import Link from "next/link";
 const WHATSAPP_URL =
   "https://wa.me/6281234567890?text=Halo, saya ingin tanya tentang paket wisata Pahawang";
 
-
 const BENEFITS = [
   "✅ Booking Mudah via WhatsApp",
   "🎯 Harga Transparan",
   "🔒 Pembayaran Aman",
   "⭐ Guide Berpengalaman",
 ];
+
+const GUARANTEE_TEXT =
+  "Respons cepat dalam 5 menit · Konsultasi gratis · Tanpa biaya tersembunyi";
 
 export default function CTASection() {
   const { ref, isVisible } = useScrollAnimation();
@@ -76,11 +78,7 @@ export default function CTASection() {
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center">
-            <a 
-              href={WHATSAPP_URL} 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               <Button
                 variant="primary"
                 size="xl"
@@ -109,8 +107,7 @@ export default function CTASection() {
 
           {/* Guarantee text */}
           <p className="mt-6 text-sm text-[var(--text-muted)]">
-            Respons cepat dalam 5 menit · Konsultasi gratis · Tanpa biaya
-            tersembunyi
+            {GUARANTEE_TEXT}
           </p>
         </div>
       </div>
