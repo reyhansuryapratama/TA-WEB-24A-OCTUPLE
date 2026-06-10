@@ -3,7 +3,16 @@
 import { useScrollAnimation } from "@/lib/hooks/useScrollAnimation";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-const features = [
+
+interface Feature {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  color: string;
+  bg: string;
+}
+
+const features: Feature[] = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
