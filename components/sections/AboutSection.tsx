@@ -5,7 +5,13 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 
-const highlights = [
+interface Highlight {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+const highlights: Highlight[] = [
   {
     icon: "🐠",
     title: "Biodiversitas Tinggi",
