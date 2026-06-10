@@ -66,6 +66,8 @@ const kategoriMap: Record<
   },
 };
 
+const CTA_TEXT = "Explore";
+
 export default function DestinasiCard({
   destinasi,
   index = 0,
@@ -276,7 +278,7 @@ export default function DestinasiCard({
               group-hover:gap-3
             "
           >
-            Explore
+            {CTA_TEXT}
 
             <svg
               width="18"
