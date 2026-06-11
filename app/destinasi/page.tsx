@@ -85,12 +85,12 @@ export default async function DestinasiPage({
     params?.kategori ?? "all";
 
   const filtered =
-    selectedKategori === "all"
-      ? destinasiList
-      : destinasiList.filter(
-          (d) =>
-            d.kategori === selectedKategori
-        );
+  selectedKategori === "all"
+    ? destinasiList
+    : destinasiList.filter(
+        (d) =>
+          d.kategori === selectedKategori
+      );
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] overflow-hidden">
@@ -207,7 +207,7 @@ export default async function DestinasiPage({
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filtered.length === 0 ? (
             <div className="text-center py-24">
-              <div className="text-6xl mb-5">
+              <div className="text-6xl mb-5"> 
                 🌊
               </div>
 
