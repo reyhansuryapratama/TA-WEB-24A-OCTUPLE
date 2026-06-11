@@ -84,13 +84,17 @@ export default async function DestinasiPage({
   const selectedKategori =
     params?.kategori ?? "all";
 
-  const filtered =
-  selectedKategori === "all"
-    ? destinasiList
-    : destinasiList.filter(
-        (d) =>
-          d.kategori === selectedKategori
-      );
+  const getFilteredDestinations = () => {
+  if (selectedKategori === "all") {
+    return destinasiList;
+  }
+
+  return destinasiList.filter(
+    (d) => d.kategori === selectedKategori
+  );
+};
+
+const filtered = getFilteredDestinations();
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] overflow-hidden">
