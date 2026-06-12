@@ -29,7 +29,7 @@ const timeline = [
     judul: "Mulai Dikenal",
 
     deskripsi:
-      "Pahawang mulai dikenal sebagai destinasi snorkeling oleh penyelam lokal Lampung.",
+      "Keindahan bawah laut Pulau Pahawang mulai menarik perhatian para penyelam dan pecinta snorkeling, menjadikannya destinasi bahari yang mulai diperhitungkan di Lampung..",
   },
 
   {
