@@ -38,7 +38,7 @@ const timeline = [
     judul: "Berkembang Pesat",
 
     deskripsi:
-      "Mulai viral di media sosial dan menarik wisatawan dari luar Lampung.",
+      "Pesona alam Pahawang semakin dikenal luas melalui rekomendasi wisatawan dan media sosial, menarik pengunjung dari berbagai daerah di Indonesia..",
   },
 
   {
