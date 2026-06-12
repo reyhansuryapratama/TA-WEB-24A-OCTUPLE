@@ -26,6 +26,9 @@ export const metadata: Metadata =
 const WHATSAPP_URL =
   "https://wa.me/6281234567890";
 
+const WHATSAPP_CTA_TITLE =
+  "💬 Chat WhatsApp";
+
 const contactInfo = [
   {
     label: "WhatsApp",
@@ -272,7 +275,7 @@ export default function KontakPage() {
               {/* CTA */}
               <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-5">
                 <h3 className="font-semibold text-emerald-800 mb-2">
-                  💬 Chat WhatsApp
+                  {WHATSAPP_CTA_TITLE}
                 </h3>
 
                 <p className="text-sm text-emerald-700 mb-4">
