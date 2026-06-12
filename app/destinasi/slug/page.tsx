@@ -5,10 +5,7 @@ import Link from "next/link";
 
 import { notFound } from "next/navigation";
 
-import {
-  destinasiList,
-  getDestinasiBySlug,
-} from "@/lib/data/destinasi";
+import { destinasiList, getDestinasiBySlug } from "@/lib/data/destinasi";
 
 /* =========================================================
    TYPES
@@ -20,8 +17,9 @@ interface PageProps {
   }>;
 }
 
-const BOOKING_BUTTON_TEXT =
-  "Booking Sekarang";
+const BOOKING_BUTTON_TEXT = "Booking Sekarang";
+
+const PREMIUM_BADGE_TEXT = "🌴 Premium Island Destination";
 
 /* =========================================================
    STATIC PARAMS
@@ -42,26 +40,21 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const destinasi =
-    getDestinasiBySlug(slug);
+  const destinasi = getDestinasiBySlug(slug);
 
   if (!destinasi) {
     return {
       title: "Destinasi Tidak Ditemukan",
-      description:
-        "Halaman destinasi tidak ditemukan.",
+      description: "Halaman destinasi tidak ditemukan.",
     };
   }
 
   return {
-    metadataBase: new URL(
-      "https://yourdomain.com"
-    ),
+    metadataBase: new URL("https://yourdomain.com"),
 
     title: `${destinasi.nama} | Pahawang Wisata`,
 
-    description:
-      destinasi.deskripsi,
+    description: destinasi.deskripsi,
   };
 }
 
@@ -69,13 +62,10 @@ export async function generateMetadata({
    PAGE
 ========================================================= */
 
-export default async function DestinasiDetailPage({
-  params,
-}: PageProps) {
+export default async function DestinasiDetailPage({ params }: PageProps) {
   const { slug } = await params;
 
-  const destinasi =
-    getDestinasiBySlug(slug);
+  const destinasi = getDestinasiBySlug(slug);
 
   if (!destinasi) {
     notFound();
@@ -87,10 +77,7 @@ export default async function DestinasiDetailPage({
       <section className="relative h-[90vh] min-h-[700px] overflow-hidden">
         {/* IMAGE */}
         <Image
-          src={
-            destinasi.gambar ||
-            "/images/placeholder.jpg"
-          }
+          src={destinasi.gambar || "/images/placeholder.jpg"}
           alt={destinasi.nama}
           fill
           priority
@@ -111,38 +98,28 @@ export default async function DestinasiDetailPage({
           <div className="container pb-20">
             {/* BREADCRUMB */}
             <div className="mb-8 flex items-center gap-3 text-sm text-white/70">
-              <Link
-                href="/"
-                className="transition hover:text-white"
-              >
+              <Link href="/" className="transition hover:text-white">
                 Beranda
               </Link>
 
               <span>/</span>
 
-              <Link
-                href="/destinasi"
-                className="transition hover:text-white"
-              >
+              <Link href="/destinasi" className="transition hover:text-white">
                 Destinasi
               </Link>
 
               <span>/</span>
 
-              <span className="text-white">
-                {destinasi.nama}
-              </span>
+              <span className="text-white">{destinasi.nama}</span>
             </div>
 
             {/* BADGE */}
             <div className="badge-luxury mb-6">
-              🌴 Premium Island Destination
+              {PREMIUM_BADGE_TEXT}
             </div>
 
             {/* TITLE */}
-            <h1 className="text-hero max-w-4xl text-white">
-              {destinasi.nama}
-            </h1>
+            <h1 className="text-hero max-w-4xl text-white">{destinasi.nama}</h1>
 
             {/* DESCRIPTION */}
             <p className="mt-8 max-w-3xl text-xl leading-9 text-white/80">
@@ -153,10 +130,7 @@ export default async function DestinasiDetailPage({
             <div className="mt-10 flex flex-wrap gap-4">
               <div className="glass-dark rounded-2xl px-5 py-4 text-white">
                 ⭐ {destinasi.rating} (
-                {destinasi.jumlahReview.toLocaleString(
-                  "id-ID"
-                )}
-                )
+                {destinasi.jumlahReview.toLocaleString("id-ID")})
               </div>
 
               <div className="glass-dark rounded-2xl px-5 py-4 text-white">
@@ -164,10 +138,7 @@ export default async function DestinasiDetailPage({
               </div>
 
               <div className="glass-dark rounded-2xl px-5 py-4 text-white">
-                🕒{" "}
-                {
-                  destinasi.waktuOperasional
-                }
+                🕒 {destinasi.waktuOperasional}
               </div>
             </div>
           </div>
@@ -175,10 +146,7 @@ export default async function DestinasiDetailPage({
 
         {/* WAVE */}
         <div className="wave-bottom relative z-10">
-          <svg
-            viewBox="0 0 1440 80"
-            preserveAspectRatio="none"
-          >
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
             <path
               fill="var(--bg-primary)"
               d="M0,32L48,37.3C96,43,192,53,288,58.7C384,64,480,64,576,58.7C672,53,768,43,864,42.7C960,43,1056,53,1152,53.3C1248,53,1344,43,1392,37.3L1440,32L1440,80L0,80Z"
@@ -200,21 +168,15 @@ export default async function DestinasiDetailPage({
                   Explore Paradise
                 </p>
 
-                <h2 className="text-section-title mt-4">
-                  Tentang Destinasi
-                </h2>
+                <h2 className="text-section-title mt-4">Tentang Destinasi</h2>
 
                 <div className="mt-10 space-y-7 text-lg leading-9 text-[var(--text-secondary)]">
                   {destinasi.deskripsiPanjang
                     .split("\n")
                     .filter(Boolean)
-                    .map(
-                      (item, idx) => (
-                        <p key={idx}>
-                          {item}
-                        </p>
-                      )
-                    )}
+                    .map((item, idx) => (
+                      <p key={idx}>{item}</p>
+                    ))}
                 </div>
               </div>
             </div>
@@ -228,15 +190,10 @@ export default async function DestinasiDetailPage({
                   </p>
 
                   <h3 className="mt-4 text-5xl text-[var(--ocean-500)]">
-                    Rp{" "}
-                    {destinasi.hargaTiket.toLocaleString(
-                      "id-ID"
-                    )}
+                    Rp {destinasi.hargaTiket.toLocaleString("id-ID")}
                   </h3>
 
-                  <p className="mt-2 text-[var(--text-muted)]">
-                    / orang
-                  </p>
+                  <p className="mt-2 text-[var(--text-muted)]">/ orang</p>
 
                   {/* BUTTON BOOKING */}
                   <Link
