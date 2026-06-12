@@ -20,6 +20,9 @@ interface PageProps {
   }>;
 }
 
+const BOOKING_BUTTON_TEXT =
+  "Booking Sekarang";
+
 /* =========================================================
    STATIC PARAMS
 ========================================================= */
@@ -256,7 +259,7 @@ export default async function DestinasiDetailPage({
                       hover:scale-[1.02]
                     "
                   >
-                    Booking Sekarang
+                    {BOOKING_BUTTON_TEXT}
                   </Link>
                 </div>
               </div>
