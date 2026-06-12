@@ -38,7 +38,7 @@ const timeline = [
     judul: "Berkembang Pesat",
 
     deskripsi:
-      "Pesona alam Pahawang semakin dikenal luas melalui rekomendasi wisatawan dan media sosial, menarik pengunjung dari berbagai daerah di Indonesia..",
+      "Pesona alam Pahawang semakin dikenal luas melalui rekomendasi wisatawan dan media sosial, menarik pengunjung dari berbagai daerah di Indonesia.",
   },
 
   {
@@ -47,7 +47,7 @@ const timeline = [
     judul: "Infrastruktur Meningkat",
 
     deskripsi:
-      "Berbagai fasilitas wisata mulai berkembang, mulai dari homestay, dermaga, hingga layanan perahu wisata untuk memberikan pengalaman yang lebih nyaman bagi pengunjung..",
+      "Berbagai fasilitas wisata mulai berkembang, mulai dari homestay, dermaga, hingga layanan perahu wisata untuk memberikan pengalaman yang lebih nyaman bagi pengunjung.",
   },
 
   {
@@ -56,7 +56,7 @@ const timeline = [
     judul: "Konservasi Terumbu Karang",
 
     deskripsi:
-      "Program transplantasi terumbu karang dimulai bersama komunitas lokal.",
+      "Masyarakat dan komunitas lingkungan berkolaborasi menjaga kelestarian ekosistem laut melalui program transplantasi terumbu karang dan edukasi konservasi.",
   },
 
   {
