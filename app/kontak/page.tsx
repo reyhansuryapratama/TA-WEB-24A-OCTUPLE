@@ -23,6 +23,9 @@ export const metadata: Metadata =
 // CONTACT INFO
 // ============================================================
 
+const WHATSAPP_URL =
+  "https://wa.me/6281234567890";
+
 const contactInfo = [
   {
     label: "WhatsApp",
@@ -31,7 +34,7 @@ const contactInfo = [
       "+62 812-3456-7890",
 
     href:
-      "https://wa.me/6281234567890",
+      WHATSAPP_URL,
 
     sublabel:
       "Respons 5 menit",
@@ -277,7 +280,7 @@ export default function KontakPage() {
                 </p>
 
                 <a
-                  href="https://wa.me/6281234567890"
+                  href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white py-3 font-semibold text-sm transition-colors"
