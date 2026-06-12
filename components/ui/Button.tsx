@@ -80,8 +80,8 @@ export default function Button({
   icon,
   iconPosition = "left",
   fullWidth,
-  children,
   className,
+  children,
   disabled,
   ...props
 }: ButtonProps) {
