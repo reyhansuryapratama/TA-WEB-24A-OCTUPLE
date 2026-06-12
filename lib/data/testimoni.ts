@@ -8,7 +8,7 @@ export const testimoniData: Testimoni[] = [
   {
     id: "1",
     nama: "Rizky Pratama",
-    asal: "Jakarta Selatan",
+    asal: "Bengkulu",
     avatar: "/images/avatar-1.jpg",
     rating: 5,
     komentar:
