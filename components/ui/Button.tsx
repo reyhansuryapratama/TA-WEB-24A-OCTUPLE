@@ -11,7 +11,7 @@ import Link from "next/link";
    Utility: cn()
 ============================================================ */
 function cn(...classes: (string | boolean | undefined | null)[]) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter((item) => Boolean(item)).join(" ");
 }
 
 /* ============================================================
