@@ -167,6 +167,14 @@ const contactInfo = [
 // PAGE
 // ============================================================
 
+const BOOKING_STEPS = [
+  "Isi form booking",
+  "Konfirmasi tanggal",
+  "Transfer DP",
+  "Terima e-ticket",
+  "Berangkat wisata",
+];
+
 export default function KontakPage() {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)]">
@@ -299,13 +307,7 @@ export default function KontakPage() {
                 </h3>
 
                 <div className="space-y-4">
-                  {[
-                    "Isi form booking",
-                    "Konfirmasi tanggal",
-                    "Transfer DP",
-                    "Terima e-ticket",
-                    "Berangkat wisata",
-                  ].map(
+                  {BOOKING_STEPS.map(
                     (
                       text,
                       index
