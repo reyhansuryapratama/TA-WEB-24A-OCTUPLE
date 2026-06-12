@@ -47,7 +47,7 @@ const timeline = [
     judul: "Infrastruktur Meningkat",
 
     deskripsi:
-      "Pembangunan homestay, dermaga, dan fasilitas wisata oleh masyarakat lokal.",
+      "Berbagai fasilitas wisata mulai berkembang, mulai dari homestay, dermaga, hingga layanan perahu wisata untuk memberikan pengalaman yang lebih nyaman bagi pengunjung..",
   },
 
   {
