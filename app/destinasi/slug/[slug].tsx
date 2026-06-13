@@ -62,7 +62,9 @@ export async function generateMetadata({
    PAGE
 ========================================================= */
 
-export default async function DestinasiDetailPage({ params }: PageProps) {
+export default async function DestinasiDetailPage({
+  params,
+}: PageProps) {
   const { slug } = await params;
 
   const destinasi = getDestinasiBySlug(slug);

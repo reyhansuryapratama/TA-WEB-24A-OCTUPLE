@@ -231,10 +231,11 @@ export function getDestinasiBySlug(
   slug: string
 ): Destinasi | undefined {
   return destinasiList.find(
-    (item) => item.slug === slug
+    (item) =>
+      item.slug.trim().toLowerCase() ===
+      slug.trim().toLowerCase()
   );
 }
-
 /* ============================================================
    FEATURED DESTINASI
 ============================================================ */
