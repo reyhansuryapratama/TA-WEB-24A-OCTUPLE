@@ -273,4 +273,4 @@ export function getDestinasiByKategori(
   return destinasiList.filter(
     (item) => item.kategori === kategori
   );
-}0
+}
